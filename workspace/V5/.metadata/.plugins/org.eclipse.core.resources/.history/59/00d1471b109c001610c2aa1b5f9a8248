@@ -1,0 +1,16 @@
+/*
+ * Engine.cpp
+ *
+ *  Created on: Oct 27, 2016
+ *      Author: Matt
+ */
+
+#include "Engine.h"
+
+Engine::Engine() {
+
+}
+
+void Engine::manager() {
+
+}

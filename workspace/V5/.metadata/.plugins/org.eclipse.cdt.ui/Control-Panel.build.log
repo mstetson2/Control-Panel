@@ -1,0 +1,9 @@
+15:38:42 **** Incremental Build of configuration Release for project Control-Panel ****
+"C:\\MiscPrograms\\sloeber\\arduinoPlugin\\tools\\make\\make" all 
+Cannot run program "C:\MiscPrograms\sloeber\arduinoPlugin\tools\make\make": Launching failed
+
+Error: Program "C:\MiscPrograms\sloeber\arduinoPlugin\tools\make\make" not found in PATH
+PATH=[C:\MiscPrograms\sloeber\arduinoPlugin\tools\arduino\avr-gcc\4.9.2-atmel3.5.3-arduino2/bin/;;C:/Program Files/Java/jdk1.8.0_101/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_101/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_101/bin/../jre/lib/amd64;C:\Program Files\Java\jdk1.8.0_101\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Common Files\Autodesk Shared\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\Subversion\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Users\Matt\AppData\Local\Microsoft\WindowsApps;;C:\Users\Matt\Programs\TDM-GCC\bin;C:\Users\Matt\Programs\sloeber;]
+
+15:38:42 Build Finished (took 58ms)
+

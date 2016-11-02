@@ -50,7 +50,7 @@ extern "C" void __cxa_pure_virtual() {;}
 #define F(string_literal) ((const PROGMEM char *)(string_literal))
 #undef PSTR
 #define PSTR(string_literal) ((const PROGMEM char *)(string_literal))")
-#include "control-panel.ino"
+#include "control-panel-6vs.ino"
 #include "Engine.ino"
 #include "Operations.ino"
 #include "operating.ino"

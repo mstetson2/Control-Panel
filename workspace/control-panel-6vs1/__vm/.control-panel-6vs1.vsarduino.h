@@ -49,18 +49,5 @@ extern "C" void __cxa_pure_virtual() {;}
 #define F(string_literal) ((const PROGMEM char *)(string_literal))
 #undef PSTR
 #define PSTR(string_literal) ((const PROGMEM char *)(string_literal))")
-#include "Control-Panel-6.ino"
-#include "Engine-Devices.ino"
-#include "Engine-Loops.ino"
-#include "Engine-Serial.ino"
-#include "Engine.ino"
-#include "Operations-Backend.ino"
-#include "Operations-Director.ino"
-#include "Operations-ErrorHandler.ino"
-#include "Operations-Functions.ino"
-#include "Operations-Memory.ino"
-#include "Operations-StopsHandler.ino"
-#include "OperationsOne.ino"
-#include "Startup-Director.ino"
-#include "Startup-Methods.ino"
+#include "control-panel-6vs1.ino"
 #endif

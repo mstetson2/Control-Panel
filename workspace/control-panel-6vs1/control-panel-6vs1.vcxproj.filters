@@ -15,24 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Engine-Devices.ino" />
-    <None Include="Engine-Loops.ino" />
-    <None Include="Engine-Serial.ino" />
-    <None Include="Engine.ino" />
-    <None Include="Operations-Backend.ino" />
-    <None Include="Operations-Director.ino" />
-    <None Include="Operations-ErrorHandler.ino" />
-    <None Include="Operations-Functions.ino" />
-    <None Include="Operations-Memory.ino" />
-    <None Include="Operations-StopsHandler.ino" />
-    <None Include="OperationsOne.ino" />
-    <None Include="Startup-Director.ino" />
-    <None Include="Startup-Methods.ino" />
-    <None Include="Control-Panel-6.ino" />
+    <None Include="$safeprojectname$.ino" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="__vm\.Control-Panel.vsarduino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
+ 
 </Project>

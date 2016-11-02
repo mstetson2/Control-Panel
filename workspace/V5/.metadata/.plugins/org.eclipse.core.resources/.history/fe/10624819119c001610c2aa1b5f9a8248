@@ -1,0 +1,17 @@
+/*
+ * Engine.h
+ *
+ *  Created on: Oct 27, 2016
+ *      Author: Matt
+ */
+
+#ifndef SRC_ENGINE_H_
+#define SRC_ENGINE_H_
+
+class Engine {
+public:
+	Engine();
+	void test(int check);
+};
+
+#endif /* SRC_ENGINE_H_ */

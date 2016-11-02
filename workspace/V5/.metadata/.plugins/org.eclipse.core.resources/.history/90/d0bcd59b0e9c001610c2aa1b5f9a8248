@@ -1,0 +1,21 @@
+/*
+ * Test.cpp
+ *
+ *  Created on: Oct 27, 2016
+ *      Author: Matt
+ */
+
+#include "Test.h"
+
+namespace Testing {
+
+Test::Test() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Test::~Test() {
+	// TODO Auto-generated destructor stub
+}
+
+} /* namespace Testing */

@@ -16,10 +16,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ControlPanel-6.ino" />
+    <None Include="Stetson-Engine.ino" />
+    <None Include="Stetson-Engine_Devices.ino" />
+    <None Include="testing.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.ControlPanel-6.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard_Communication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard_Communication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

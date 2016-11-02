@@ -47,10 +47,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\libraries;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\libraries;C:\Users\Matt\Desktop\Development\Language\Arduino\Workspace\libraries;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\cores\arduino;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\variants\mega;C:\Users\Matt\Desktop\Development\Language\Arduino\Projects\Control-Panel\workspace\ControlPanel-6;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\tools\avr/avr/include/;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\tools\avr//avr/include/avr/;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\libraries\Wire\src;C:\Users\Matt\Desktop\Development\Language\Arduino\Workspace\libraries\Arduino-LiquidCrystal-I2C-library-master;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\libraries\LiquidCrystal\src;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src;C:\Users\Matt\Desktop\Development\Language\Arduino\Workspace\libraries\Arduino-LiquidCrystal-I2C-library-master\utility;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\libraries\LiquidCrystal\src\utility;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src\utility;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\libraries\Wire\src\utility;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\libraries;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\libraries;C:\Users\Matt\Desktop\Development\Language\Arduino\Workspace\libraries;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\cores\arduino;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\arduino\avr\variants\mega;C:\Users\Matt\Desktop\Development\Language\Arduino\Projects\Control-Panel\workspace\ControlPanel-6;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\tools\avr/avr/include/;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\tools\avr//avr/include/avr/;C:\Users\Matt\Desktop\Development\Language\Arduino\Programs\Arduino\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>C:\Users\Matt\Desktop\Development\Language\Arduino\Projects\Control-Panel\workspace\ControlPanel-6\__vm\.ControlPanel-6.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega2560__;F_CPU=16000000L;ARDUINO=106012;ARDUINO_AVR_ADK;ARDUINO_ARCH_AVR;__cplusplus=201103L;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_ATmega2560__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=106012;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -77,9 +77,20 @@
     <None Include="ControlPanel-6.ino">
       <FileType>CppCode</FileType>
     </None>
+    <None Include="Stetson-Engine.ino" />
+    <None Include="Stetson-Engine_Devices.ino" />
+    <None Include="testing.ino" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Keyboard_Communication.h" />
+    <ClInclude Include="test.h" />
     <ClInclude Include="__vm\.ControlPanel-6.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Keyboard_Communication.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

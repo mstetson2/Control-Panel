@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Control_Panel/Operations-Error_Handler&apos; to &apos;Operations-Error_Handler.ino&apos;" description="Rename resource &apos;Operations-Error_Handler&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Operations-Error_Handler" name="Operations-Error_Handler.ino" stamp="1473750226120" updateReferences="true"/>
+</session>

@@ -8,10 +8,10 @@
 #include <Arduino.h>
 
 #include <Wire.h>
-#include <LiquidCrystal.h>
-#include <SoftwareSerial.h>
 #include <LiquidCrystal_I2C.h>
-#include <LCD.h>
+#include <SoftwareSerial.h>
+//#include <LiquidCrystal_I2C.h>
+//#include <LCD.h>
 #define GPIO_ADDR 0x27
 
 String version = "8-alpha";
@@ -242,8 +242,8 @@ String version = "8-alpha";
 	int hornTone = 150;
 
 /** LCD SCREEN **/
-	LiquidCrystal_I2C lcd(0x27,20,4); //Addr: 0x3F, 20 chars & 4 lines
-	//LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7);
+	//LiquidCrystal_I2C lcd(0x27,20,4); //Addr: 0x3F, 20 chars & 4 lines
+	LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7);
 	//LiquidCrystal_I2C lcd(0x3f, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
 	SoftwareSerial LCD = SoftwareSerial(0, 14);
 	const int LCDdelay = 2;
@@ -265,7 +265,11 @@ Serial.begin(9600);
   //lcd.begin();
   //lcd.backlight();
 
-	lcd.backlight();
+	lcd.begin(20,4);
+	lcd.setBacklightPin(3,POSITIVE);
+	lcd.setBacklight(HIGH);
+	lcd.home();
+
   lcd.setCursor(0, 0);
   lcd.print("WELCOME");
   lp(0,1);

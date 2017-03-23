@@ -222,10 +222,7 @@ void stopTestCompleted() {
 	}
 }
 
-boolean rideChecked;
-int ackHold;
-int startCount = 0;
-int previousMillis;
+
 void longWarning() {
 	digitalWrite(estopLed, HIGH);
 	if (!b1) {
@@ -381,4 +378,3 @@ void finalStartup() {
 void finalStartupComplete() {
 	finalStarted = true;
 }
-

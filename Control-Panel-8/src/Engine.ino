@@ -1,16 +1,5 @@
 #include <Arduino.h>
 
-boolean m100;
-boolean m250;
-boolean m500;
-boolean m1000;
-
-long p100;
-long p250;
-long p500;
-long p1000;
-long pHold;
-
 void buttonStates() {
 	if (digitalRead(trouble_pressed) == LOW) {
 		troublePressed = true;

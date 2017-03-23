@@ -1,15 +1,5 @@
 #include <Arduino.h>
 
-boolean eStopHandled;
-boolean rideStopHandled;
-boolean rideStopBlink;
-boolean keyboardStopSent;
-
-int esrHoldCounter;
-int startHoldCounter;
-
-int stopDelay = 500;
-
 void stopListener() {
 	if (!panelOn) {
 		eStop = true;

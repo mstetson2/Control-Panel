@@ -30,7 +30,6 @@
           "EXTRA FUNCTIONS BOOTED TXT!!"
  *
  */
-boolean functionSelect;
 
 void functionRequestHandler() {
 	if(!booted) {
@@ -212,4 +211,3 @@ void function2() {
 void function3() {
 
 }
-

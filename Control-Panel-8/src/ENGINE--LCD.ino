@@ -1,6 +1,9 @@
 #include <Arduino.h>
 
+//
+
 lcdData lcd_999 = {"WELCOME", "Version:","VERSION","By Matt Stetson"};
+lcdData lcd_000 = {"OPERATIONS:","E-STOP: OK","ERROR: OK","DISPATCH: UNKNOWN"};
 lcdData lcd_001 = {"STATUS 001: ","PANEL POWER OFF","333","444"};
 
 lcdData lcd_100 = {"STATUS 100:"," "," ","DISPATCHING"};
@@ -10,22 +13,39 @@ lcdData lcd_510 = {"STATUS 510:","E-STOP PRESSED"," ","Switch to BYPASS"};
 lcdData lcd_515 = {"STATUS 515:","E-STOP RESET:","To reset ESR:","Press ESR RESET"};
 lcdData lcd_520 = {"STATUS 520:","RIDE STOP PRESSED"," ","PRESS RIDE START"};
 
-int lcdSetStatus(int statusNumber) {
+int lcdSet(int statusNumber) {
 	if(statusNumber == lcdStatus) {
 		return 0;
 	}
+
 
 	switch(statusNumber) {
 		case 001:
 			lcdWrite(lcd_001);
 			break;
+		case 100:
+			lcdWrite(lcd_100);
+			break;
+		case 500:
+			lcdWrite(lcd_500);
+			break;
+		case 510:
+			lcdWrite(lcd_510);
+			break;
+		case 515:
+			lcdWrite(lcd_515);
+			break;
+		case 520:
+			lcdWrite(lcd_520);
+			break;
 		case 999:
 			lcdWrite(lcd_999);
 			break;
 		default:
-			return -1;
+			lcdWrite(lcd_000);
 			break;
 	}
+	lcdStatus = statusNumber;
 	return 1;
 }
 

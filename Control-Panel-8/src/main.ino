@@ -40,7 +40,7 @@ String version = "8-alpha";
 	char line4[20];
 };
 	int lcdStatus = 0;
-	int lcdSetStatus(int statusNumber);
+	int lcdSet(int statusNumber);
 	int lcdWrite(lcdData d);
 
 	/* ENGINE--SERIAL */

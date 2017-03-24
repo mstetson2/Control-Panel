@@ -97,6 +97,9 @@ void lampTestFunction() {
 	}
 	if (ridestartPressed) {
 		debugM("Warning horn test");
+		tone(warning_speaker,350);
+	} else {
+		noTone(warning_speaker);
 	}
 }
 void skipBoot() {

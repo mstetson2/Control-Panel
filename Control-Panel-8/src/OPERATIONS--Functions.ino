@@ -70,15 +70,24 @@ void startupFunctionPrompt() {
 		}
 	}
 
-	if(functionEnabled) {
-		if(restraintPressed) {
-			functionSelect = true;
-		}
-		else {
-			lampsOff();
+	if(ridestartPressed) {
+		if(buttonHold(500,m)) {
+			digitalWrite(ridestartLed, LOW);
+			Serial.println("Function Select Skipped.");
+			functionSelectStartup = true;
 		}
 	}
 
+	if(functionEnabled) {
+		if(restraintPressed) {
+			if(buttonHold(500,m)) {
+				Serial.println("Function menu selected");
+				digitalWrite(restraintLed, LOW);
+				functionSelect = true;
+			}
+		}
+
+	}
 }
 
 void functionsPageSelect() {

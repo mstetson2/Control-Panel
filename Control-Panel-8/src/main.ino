@@ -32,6 +32,17 @@ String version = "8-alpha";
 		void blink500();
 		void blink1000();
 		boolean buttonHold(int pressTime, unsigned long pHold);
+	/* ENGINE--LCD */
+	struct lcdData {
+	char line1[20];
+	char line2[20];
+	char line3[20];
+	char line4[20];
+};
+	int lcdStatus = 0;
+	int lcdSetStatus(int statusNumber);
+	int lcdWrite(lcdData d);
+
 	/* ENGINE--SERIAL */
 		char slant[] = {
 		    "/////////////////////////////////////////////" };
@@ -159,13 +170,13 @@ String version = "8-alpha";
 
 	/** STARTUP **/
 	boolean booted;
-		boolean lampTested = false;
-		boolean stopTested = false;
-		boolean functionSelectStartup = true; //DO NOT SET TO FALSE
-		boolean longWarninged = false;
-		boolean estopReseted = false;
-		boolean finalStarted = false;
-		boolean finalWarninged = false;
+		boolean lampTested 				= false;
+		boolean stopTested 				= false;
+		boolean functionSelectStartup 	= false; //DO NOT SET TO FALSE
+		boolean longWarninged 			= false;
+		boolean estopReseted 			= false;
+		boolean finalStarted 			= false;
+		boolean finalWarninged			= false;
 		boolean isHeld, pSent;
 		unsigned long m;
 	/* STARTUP--Director */
@@ -238,7 +249,8 @@ String version = "8-alpha";
 	restraintLed 		= 47,
 	dispatchLLed 		= 43,
 	dispatchRLed 		= 49,
-	warning_horn 		= 5;
+	warning_speaker		= A9,
+	warning_horn 		= A10;
 	int hornTone = 150;
 
 /** LCD SCREEN **/
@@ -314,7 +326,8 @@ Serial.begin(9600);
   pinMode(dispatchRLed, OUTPUT);
   pinMode(esrLed, OUTPUT);
   pinMode(opsLed, OUTPUT);
-  //pinMode(warning_horn, OUTPUT);
+  pinMode(warning_speaker, OUTPUT);
+  pinMode(warning_horn, OUTPUT);
   //^is analog
   digitalWrite(trouble_pressed, HIGH);
   digitalWrite(emergency_stop_notpressed, HIGH);

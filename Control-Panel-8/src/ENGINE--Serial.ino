@@ -3,42 +3,6 @@
  */
 #include <Arduino.h>
 
-char slant[] = {
-    "/////////////////////////////////////////////" };
-char vert[] =
-    { "|||||||||||||||||||||||||||||||||||||||||||" };
-String space = "";
-String debug = "DEBUG: ";
-int bM;
-int ltM;
-int stM;
-boolean preStarted;
-boolean startInitMessage;
-boolean s1;
-boolean s2;
-boolean s3;
-boolean s4;
-boolean s5;
-boolean b1;
-boolean b2;
-boolean b3;
-boolean b4;
-boolean b5;
-boolean b6;
-boolean b7;
-boolean b8;
-boolean b9;
-boolean b10;
-boolean f1;
-boolean f1a;
-boolean f1b;
-boolean f2;
-boolean f2a;
-boolean f2b;
-boolean f3;
-boolean f3a;
-boolean f3b;
-
 void sT(String m) {
   Serial.println(m);
 }
@@ -123,12 +87,7 @@ void lampTestSerial(int ltM) {
     Serial.println(m[0]);
     Serial.println(m[1]);
     Serial.println(space);
-    lcd.clear();
-    lcd.print("STARTUP: PHASE I");
-    lp(0,1);
-    lcd.print("LAMP TEST");
-    lp(0,3);
-    lcd.print("Press ACKNOWLEDGE");
+    
     b1 = true;
     break;
   case 2:

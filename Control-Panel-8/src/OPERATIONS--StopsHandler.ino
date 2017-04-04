@@ -1,15 +1,5 @@
 #include <Arduino.h>
 
-boolean eStopHandled;
-boolean rideStopHandled;
-boolean rideStopBlink;
-boolean keyboardStopSent;
-
-int esrHoldCounter;
-int startHoldCounter;
-
-int stopDelay = 500;
-
 void stopListener() {
 	if (!panelOn) {
 		eStop = true;
@@ -56,9 +46,9 @@ void eStopHandle() {
 	digitalWrite(acknowledgeLed, LOW);
 	digitalWrite(ridestopLed, HIGH);
 	Serial.println("E-STOP PRESSED");
-	rideError(150);
+	lcdSet(510);
+	//rideError(150);
 	if(!keyboardStopSent) {
-		//TODO send keyboard e-stop
 		kEstop();
 		keyboardStopSent = true;
 	}
@@ -91,8 +81,9 @@ void rideStopHandle() {
 	digitalWrite(acknowledgeLed, LOW);
 	digitalWrite(ridestartLed, LOW);
 	Serial.println("RIDE STOP PRESSED");
+	lcdSet(520);
 	if(!keyboardStopSent) {
-		//TODO send keyboard e-stop
+		kEstop();
 		keyboardStopSent = true;
 	}
 	delay(stopDelay);
@@ -107,22 +98,17 @@ void rideStopResetHandle() {
 	stop = false;
 	keyboardStopSent = false;
 	rideStopBlink = false;
-	//restraintsLocked = false;
-
-	rideStopHandled = true;
+	rideStopHandled = false;
+	lcdSet(000);
+	restraintsLocked = false;
+	kEstop();
 	delay(500);
 }
 
 void stopReset() {
 	if (eStop) {
-		l("E-STOP PRESSED", 0);
 		if (modeBypass) {
-			lcdC();
-			LCD.print("PRESS RIDE START");
-			lcdN();
-			LCD.print("TO ESR RESET");
-			l("To reset ESR loop:",2);
-			l("Press ESR RESET",3);
+			lcdSet(515);
 
 			if (esrPressed) {
 				digitalWrite(esrLed, HIGH);
@@ -148,9 +134,6 @@ void stopReset() {
 			LCD.print("E-STOP ACTIVE");
 			lcdN();
 			LCD.print("Switch to BYPASS!");
-			l("Switch to BYPASS",3);
-
-
 		}
 
 	} else if (error) {
@@ -178,7 +161,7 @@ void stopReset() {
 			functionSelect = true;
 		}
 
-		if (startHoldCounter < 10) {
+		if (startHoldCounter < 5) {
 			if (ridestartPressed) {
 				digitalWrite(ridestartLed, HIGH);
 				startHoldCounter++;

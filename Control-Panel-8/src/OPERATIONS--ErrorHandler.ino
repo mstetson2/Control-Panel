@@ -2,9 +2,6 @@
 
 #include <Arduino.h>
 
-boolean errorHandled;
-int errorSeverity;
-
 void rideError(int e) {
 	error = true;
 	errorCode = e;

@@ -1,18 +1,5 @@
 #include <Arduino.h>
 
-boolean gatesLocked;
-boolean restraintsLocked;
-boolean floorDown;
-boolean flyerLocked;
-
-boolean restraintD;
-
-boolean dispatchReady; //used in type 2 and 3 to say floor ready to lower
-boolean dispatchClear;
-boolean dispatching;
-boolean dispatchDone;
-int dispatchCooldown;
-
 void typeChecker() {
 	if (typeOne) {
 		modeCheck1();
@@ -82,11 +69,7 @@ void dispatch() {
 		LCD.print("STATUS 100:");
 		lcdN();
 		LCD.print("DISPATCHING!");
-		lcd.clear();
-		lcd.setCursor(0,0);
-		lcd.print("STATUS 100: ");
-		lcd.setCursor(0,1);
-		lcd.print("DISPATCHING!");
+		lcdSet(100);
 		dispatching = true;
 	}
 }

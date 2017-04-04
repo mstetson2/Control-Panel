@@ -1,9 +1,6 @@
 #include <Arduino.h>
 
-int startMessage = 0;
-boolean i1;
-boolean i2;
-boolean i3;
+
 
 void booter() {
 //blink estop during boot
@@ -112,4 +109,3 @@ void estopBlinkBoot() {
 		}
 	}
 }
-

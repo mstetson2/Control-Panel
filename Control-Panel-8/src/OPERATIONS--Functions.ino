@@ -30,7 +30,6 @@
           "EXTRA FUNCTIONS BOOTED TXT!!"
  *
  */
-boolean functionSelect;
 
 void functionRequestHandler() {
 	if(!booted) {
@@ -71,15 +70,24 @@ void startupFunctionPrompt() {
 		}
 	}
 
-	if(functionEnabled) {
-		if(restraintPressed) {
-			functionSelect = true;
-		}
-		else {
-			lampsOff();
+	if(ridestartPressed) {
+		if(buttonHold(500,m)) {
+			digitalWrite(ridestartLed, LOW);
+			Serial.println("Function Select Skipped.");
+			functionSelectStartup = true;
 		}
 	}
 
+	if(functionEnabled) {
+		if(restraintPressed) {
+			if(buttonHold(500,m)) {
+				Serial.println("Function menu selected");
+				digitalWrite(restraintLed, LOW);
+				functionSelect = true;
+			}
+		}
+
+	}
 }
 
 void functionsPageSelect() {
@@ -158,10 +166,12 @@ void function1() {
 
 		if (m1000) {
 			digitalWrite(restraintLed, HIGH);
-			digitalWrite(dispatchRLed, LOW);
+			digitalWrite(dispatchLLed, LOW);
+			digitalWrite(dispatchRLed, HIGH);
 		} else if (!rAutoUnlock) {
 			digitalWrite(restraintLed, LOW);
-			digitalWrite(dispatchRLed, HIGH);
+			digitalWrite(dispatchLLed, HIGH);
+			digitalWrite(dispatchRLed, LOW);
 		}
 
 		if (restraintPressed) {
@@ -175,6 +185,18 @@ void function1() {
 			}
 			delay(1000);
 		}
+		if (dispatchRPressed) {
+			if (!singleDispatch) {
+				singleDispatch = true;
+				digitalWrite(dispatchRLed, HIGH);
+				functionPage1Serial(111);
+			} else {
+				singleDispatch = false;
+				functionPage1Serial(112);
+			}
+			delay(1000);
+		}
+
 
 	} else {
 		digitalWrite(restraintLed, LOW);
@@ -212,4 +234,3 @@ void function2() {
 void function3() {
 
 }
-

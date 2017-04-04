@@ -6,9 +6,9 @@ void modeCheck1() {
 	if(modeAuto) {
 		autoMode1();
 	} else if(modeManual) {
-
+		manualMode1();
 	} else if(modeBypass) {
-
+		bypassMode1();
 	} else {
 		debugM("UNKNOWN MODE");
 		//error = 10;
@@ -68,11 +68,11 @@ void bypassMode1() {
 		dispatching = false;
 		if(m1000) {
 			digitalWrite(dispatchRLed, HIGH);
+			digitalWrite(dispatchLLed,LOW);
 		}
 		else {
-			digitalWrite(dispatchRLed, HIGH);
+			digitalWrite(dispatchRLed, LOW);
 		}
 	}
 
 }
-

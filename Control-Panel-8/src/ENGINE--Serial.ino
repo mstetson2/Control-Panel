@@ -87,12 +87,7 @@ void lampTestSerial(int ltM) {
     Serial.println(m[0]);
     Serial.println(m[1]);
     Serial.println(space);
-    lcd.clear();
-    lcd.print("STARTUP: PHASE I");
-    lp(0,1);
-    lcd.print("LAMP TEST");
-    lp(0,3);
-    lcd.print("Press ACKNOWLEDGE");
+    
     b1 = true;
     break;
   case 2:

@@ -39,9 +39,13 @@ String version = "8-alpha";
 	char line3[20];
 	char line4[20];
 };
-	int lcdStatus = 0;
+	int lcdStatus = 000;
+	int lcdStatusStart = 000;
 	int lcdSet(int statusNumber);
 	int lcdWrite(lcdData d);
+	int lcdSetStartup(int startupCode);
+	int lcdWriteStartup(lcdData s);
+
 
 	/* ENGINE--SERIAL */
 		char slant[] = {
@@ -97,6 +101,8 @@ String version = "8-alpha";
 	/** OPERATIONS **/
 		boolean down, stop, rideStop, eStop, error;
 		int errorCode;
+
+	/** FUNCTIONS!! **/
 		boolean rAutoUnlock = true;
 		boolean supervisorMode;
 		boolean singleDispatch;
@@ -168,8 +174,10 @@ String version = "8-alpha";
 		void manualMode1();
 		void bypassMode1();
 
+	/** FUNCTIONS **/
+
 	/** STARTUP **/
-	boolean booted;
+		boolean booted				= false;
 		boolean lampTested 				= false;
 		boolean stopTested 				= false;
 		boolean functionSelectStartup 	= false; //DO NOT SET TO FALSE

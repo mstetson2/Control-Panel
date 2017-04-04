@@ -166,10 +166,12 @@ void function1() {
 
 		if (m1000) {
 			digitalWrite(restraintLed, HIGH);
-			digitalWrite(dispatchRLed, LOW);
+			digitalWrite(dispatchLLed, LOW);
+			digitalWrite(dispatchRLed, HIGH);
 		} else if (!rAutoUnlock) {
 			digitalWrite(restraintLed, LOW);
-			digitalWrite(dispatchRLed, HIGH);
+			digitalWrite(dispatchLLed, HIGH);
+			digitalWrite(dispatchRLed, LOW);
 		}
 
 		if (restraintPressed) {
@@ -183,6 +185,18 @@ void function1() {
 			}
 			delay(1000);
 		}
+		if (dispatchRPressed) {
+			if (!singleDispatch) {
+				singleDispatch = true;
+				digitalWrite(dispatchRLed, HIGH);
+				functionPage1Serial(111);
+			} else {
+				singleDispatch = false;
+				functionPage1Serial(112);
+			}
+			delay(1000);
+		}
+
 
 	} else {
 		digitalWrite(restraintLed, LOW);

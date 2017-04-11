@@ -26,10 +26,6 @@ void autoMode1() {
 	else {
 		if(!dispatchPressed) {
 			digitalWrite(opsLed, LOW);
-			lcdC();
-			LCD.print("AIRGATES:    OK!");
-			lcdN();
-			LCD.print("RESTRAINTS:  OK!");
 			dispatchDone = true;
 			dispatchReady = false;
 			if(rAutoUnlock) {

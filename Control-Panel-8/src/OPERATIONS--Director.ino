@@ -5,8 +5,10 @@ void typeChecker() {
 		modeCheck1();
 	} else if (typeTwo) {
 		//modeCheck2();
+		lcdSet(800);
 	} else if (typeThree) {
 		//modeCheck3();
+		lcdSet(800);
 	} else {
 		debugM("UNKNOWN MODE");
 	}
@@ -52,7 +54,11 @@ void dispatchIsReady() {
 			digitalWrite(dispatchRLed, LOW);
 		}
 		if (dispatchPressed) {
+			digitalWrite(dispatchRLed, HIGH);
+			digitalWrite(dispatchLLed, HIGH);
+			digitalWrite(restraintLed, LOW);
 			dispatch();
+			digitalWrite(opsLed, HIGH);
 		}
 	} else {
 		digitalWrite(dispatchLLed, LOW);
@@ -60,17 +66,10 @@ void dispatchIsReady() {
 	}
 }
 void dispatch() {
-	if (!dispatching) {
-		digitalWrite(dispatchRLed, HIGH);
-		digitalWrite(dispatchLLed, HIGH);
-		digitalWrite(restraintLed, LOW);
-		kDispatch();
-		lcdC();
-		LCD.print("STATUS 100:");
-		lcdN();
-		LCD.print("DISPATCHING!");
-		lcdSet(100);
+	if(!dispatching) {
 		dispatching = true;
+		kDispatch();
+		lcdSet(100);
 	}
 }
 
@@ -81,12 +80,14 @@ void airgates() {
 			gatesLocked = false;
 			lcdPosition(0, 0);
 			LCD.print("AIRGATES:  OPEN!");
+			lcdSet(110);
 		}
 	} else {
 		if (!gatesLocked) {
 			kCloseGates();
 			lcdPosition(0, 0);
 			LCD.print("AIRGATES:    OK!");
+			lcdSet(109);
 			gatesLocked = true;
 		}
 	}
@@ -103,7 +104,7 @@ void restraints() {
 				sT("Restraints unlocked");
 				lcdN();
 				LCD.print("RESTRAINTS: OPEN");
-				//TODO send restraints open
+				lcdSet(120);
 				delay(100);
 			} else {
 				restraintsLocked = true;
@@ -112,7 +113,7 @@ void restraints() {
 				sT("Restraints locked");
 				lcdN();
 				LCD.print("RESTRAINTS:  OK!");
-				//TODO send lock
+				lcdSet(109);
 				delay(100);
 			}
 		}
@@ -128,4 +129,5 @@ void autoUnlock() {
 	kOpenRestraints();
 	lcdN();
 	LCD.print("RESTRAINTS: OPEN");
+	lcdSet(120);
 }

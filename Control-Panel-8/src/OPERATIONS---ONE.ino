@@ -16,17 +16,16 @@ void modeCheck1() {
 }
 
 void autoMode1() {
+	dispatchIsReady();
 	if(!dispatching) {
 		airgates();
 		restraints();
 		dispatchReadyCheck();
-		dispatchIsReady();
+
 	}
 	else {
-		if(dispatchPressed) {
-
-		}
-		else {
+		if(!dispatchPressed) {
+			digitalWrite(opsLed, LOW);
 			lcdC();
 			LCD.print("AIRGATES:    OK!");
 			lcdN();
@@ -38,8 +37,10 @@ void autoMode1() {
 			}
 			dispatching = false;
 		}
+		else {
+			dispatching = true;
+		}
 	}
-
 }
 
 void manualMode1() {

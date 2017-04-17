@@ -16,60 +16,26 @@ void modeCheck1() {
 }
 
 void autoMode1() {
-	dispatchIsReady();
-	if(!dispatching) {
+	if(dispatchHandle() != 1) {
+		//not dispatching:
 		airgates();
 		restraints();
-		dispatchReadyCheck();
-
 	}
 	else {
-		if(!dispatchPressed) {
-			digitalWrite(opsLed, LOW);
-			dispatchDone = true;
-			dispatchReady = false;
-			if(rAutoUnlock) {
+		//dispatching:
+		if(dispatchHandle() != 1) {
+			if(autoUnlock) {
 				autoUnlock();
 			}
-			dispatching = false;
-		}
-		else {
-			dispatching = true;
 		}
 	}
 }
 
 void manualMode1() {
-	if(!dispatching) {
-		airgates();
-		restraints();
-		dispatchIsReady();
-	}
-	else {
-		if(!dispatchPressed) {
-			dispatching = false;
-		}
-	}
+
 }
 
 void bypassMode1() {
-	airgates();
-	restraints();
 
-	if(dispatchRPressed) {
-		if(!dispatching) {
-			dispatch();
-		}
-	}
-	else {
-		dispatching = false;
-		if(m1000) {
-			digitalWrite(dispatchRLed, HIGH);
-			digitalWrite(dispatchLLed,LOW);
-		}
-		else {
-			digitalWrite(dispatchRLed, LOW);
-		}
-	}
 
 }

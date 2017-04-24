@@ -16,60 +16,112 @@ void modeCheck1() {
 }
 
 void autoMode1() {
-	dispatchIsReady();
+	/*
+	Serial.print("L: ");
+	Serial.print(dispatchLPressed);
+	Serial.print("   R: ");
+	Serial.print(dispatchRPressed);
+	Serial.println(" ");
+	*/
+	//when not dispatching
 	if(!dispatching) {
 		airgates();
 		restraints();
-		dispatchReadyCheck();
 
-	}
-	else {
-		if(!dispatchPressed) {
-			digitalWrite(opsLed, LOW);
-			dispatchDone = true;
-			dispatchReady = false;
-			if(rAutoUnlock) {
-				autoUnlock();
+		if(gatesLocked && restraintsLocked) {
+			if(dispatchPressed) {
+				digitalWrite(dispatchLLed, HIGH);
+				digitalWrite(dispatchRLed, HIGH);
+				kDispatch();
+				lcdSet(100);
+				Serial.println("DISPATCHING!");
+				dispatching = true;
 			}
-			dispatching = false;
+			else {
+			//blink LED's
+				if (m1000) {
+					digitalWrite(dispatchLLed, HIGH);
+					digitalWrite(dispatchRLed, HIGH);
+				}
+				else {
+					digitalWrite(dispatchLLed, LOW);
+					digitalWrite(dispatchRLed, LOW);
+				}
+			}
 		}
 		else {
-			dispatching = true;
+			digitalWrite(dispatchLLed, LOW);
+			digitalWrite(dispatchRLed, LOW);
+		}
+	}
+	else {
+		if(!dispatchRPressed || !dispatchLPressed) {
+			Serial.println("DISPATCH RELEASED!");
+			if(autoUnlock) {
+				autoUnlock();
+			}
+		dispatching = false;
 		}
 	}
 }
 
 void manualMode1() {
-	if(!dispatching) {
-		airgates();
-		restraints();
-		dispatchIsReady();
+	restraints();
+	airgates();
+
+	if(dispatchPressed) {
+		digitalWrite(dispatchLLed, HIGH);
+		digitalWrite(dispatchRLed, HIGH);
+		kDispatch();
+		lcdSet(100);
+		delay(10);
 	}
 	else {
-		if(!dispatchPressed) {
-			dispatching = false;
+		if (m1000) {
+			digitalWrite(dispatchLLed, HIGH);
+			digitalWrite(dispatchRLed, HIGH);
+		}
+		else {
+			digitalWrite(dispatchLLed, LOW);
+			digitalWrite(dispatchRLed, LOW);
 		}
 	}
 }
 
 void bypassMode1() {
-	airgates();
-	restraints();
+	if(!dispatching) {
+		airgates();
+		restraints();
 
-	if(dispatchRPressed) {
-		if(!dispatching) {
-			dispatch();
-		}
-	}
-	else {
-		dispatching = false;
-		if(m1000) {
-			digitalWrite(dispatchRLed, HIGH);
-			digitalWrite(dispatchLLed,LOW);
+		if(gatesLocked && restraintsLocked) {
+			if(dispatchRPressed) {
+				digitalWrite(dispatchLLed, HIGH);
+				digitalWrite(dispatchRLed, HIGH);
+				kDispatch();
+				lcdSet(100);
+				Serial.println("DISPATCHING!--BYPASS");
+				dispatching = true;
+			}
+			else {
+			//blink LED's
+				if (m500) {
+					digitalWrite(dispatchRLed, HIGH);
+				}
+				else {
+					digitalWrite(dispatchLLed, LOW);
+					digitalWrite(dispatchRLed, LOW);
+				}
+			}
 		}
 		else {
+			digitalWrite(dispatchLLed, LOW);
 			digitalWrite(dispatchRLed, LOW);
 		}
 	}
-
+	else {
+		if(!dispatchRPressed) {
+			Serial.println("DISPATCH RELEASED!--BYPASS");
+		dispatching = false;
+		}
+	}
 }

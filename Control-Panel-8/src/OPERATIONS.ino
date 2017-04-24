@@ -15,45 +15,6 @@ void operationsLoops() {
     }
 }
 
-int dispatchHandle() {
-    if(isDispatchReady() == 1) {
-        //dispatch is ready:
-        while(dispatchPressed) {
-            digitalWrite(dispatchLLed, HIGH);
-            digitalWrite(dispatchRLed, HIGH);
-
-            kDispatch();    //send keyboard dispatch
-            lcdSet(100);    //set LCD dispatching
-
-            return 1;
-        }
-        else {
-        //blink LED's
-            if (m1000) {
-                digitalWrite(dispatchLLed, HIGH);
-                digitalWrite(dispatchRLed, HIGH);
-            } else {
-                digitalWrite(dispatchLLed, LOW);
-                digitalWrite(dispatchRLed, LOW);
-            }
-        }
-    }
-    else {
-        digitalWrite(dispatchLLed, LOW);
-        digitalWrite(dispatchRLed, LOW);
-    }
-    return 0;
-}
-
-int isDispatchReady() {
-    if(type == 1) {
-        if(gatesLocked && restraintsLocked) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
 void airgates() {
 	if (gatesOpen) {
 		if (gatesLocked) {

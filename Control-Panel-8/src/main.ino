@@ -124,7 +124,7 @@ String version = "8-alpha";
 
 	/* OPERATIONS--DIRECTOR */
 		boolean gatesLocked, restraintsLocked, floorDown, flyerLocked;
-		boolean restraintD;
+		boolean restraintD, floorD, chassisD;
 		boolean dispatchReady, dispatchClear, dispatching, dispatchDone;
 		int dispatchCooldown;
 		void typeChecker();
@@ -133,6 +133,8 @@ String version = "8-alpha";
 		void airgates();
 		void restraints();
 		void autoUnlock();
+		void flyerChassis();
+		void floorPlaten();
 	/* OPERATIONS--ERRORHANDLER */
 		boolean errorHandled;
 		int errorSeverity;
@@ -172,7 +174,16 @@ String version = "8-alpha";
 		void autoMode1();
 		void manualMode1();
 		void bypassMode1();
-
+	/* OPERATIONS---TWO */
+		void modeCheck2();
+		void autoMode2();
+		void manualMode2();
+		void bypassMode2();
+	/* OPERATIONS---THREE */
+		void modeCheck3();
+		void autoMode3();
+		void manualMode3();
+		void bypassMode3();
 	/** FUNCTIONS **/
 
 	/** STARTUP **/

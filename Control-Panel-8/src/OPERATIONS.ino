@@ -7,6 +7,7 @@ void operationsLoops() {
     if(!stop) {
     	typeChecker();
     	stopBlinker();
+      acknowledgeErrorListener();
     }
     else {
     	if(!estopPressed) {
@@ -96,5 +97,20 @@ void setModeLed() {
     }
   } else {
     digitalWrite(modeLed, LOW);
+  }
+}
+
+void acknowledgeErrorListener() {
+  int ackPress;
+  if(acknowledgePressed) {
+    ackPress++;
+    digitalWrite(acknowledgeLed, HIGH);
+  }
+  else {
+    digitalWrite(acknowledgeLed, LOW);
+  }
+  if(ackPress > 10) {
+    ackPress = 0;
+    rideError(250);
   }
 }

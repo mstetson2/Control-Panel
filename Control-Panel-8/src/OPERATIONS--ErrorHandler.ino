@@ -54,6 +54,9 @@ void errorView() {
 	case 150:
 		Serial.println("Main panel e-stop pressed!");
 		break;
+	case 250:
+		Serial.println("ACKNOWLEDGE ERROR");
+		break;
 	default:
 		Serial.println("NO ERROR");
 		break;

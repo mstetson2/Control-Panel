@@ -137,6 +137,9 @@ String version = "8-alpha";
 		void floorPlaten();
 	/* OPERATIONS--ERRORHANDLER */
 		boolean errorHandled;
+		boolean errorCleared;
+		boolean errorDisplayed;
+		boolean gotoManDisplayed;
 		int errorSeverity;
 		void rideError(int e);
 		void errorController();
@@ -204,6 +207,7 @@ String version = "8-alpha";
 		void bootComplete();
 		void bFalse();
 		void estopBlinkBoot();
+		void powerBlinkBoot();
 	/* STARTUP--Methods */
 		void lampTest();
 		void lampTestAuto();
@@ -306,7 +310,7 @@ Serial.begin(9600);
   lcd.print("Version: ");
   lcd.print(version);
   lp(0,2);
-  lcd.print("By Matt Stetson");
+  //lcd.print("By Matt Stetson");
 
 
 /* FOR WIRE (KEYBOARD) COMMUNICATION */

@@ -38,16 +38,18 @@ void longWarning() {
 		} else {
 			if (ridestartPressed) {
 				digitalWrite(ridestartLed, HIGH);
+				tone(warning_horn, 750);
 				if (!pSent) {
 					m = millis();
 					pSent = true;
 				}
-				isHeld = buttonHold(10000, m);
+				isHeld = buttonHold(5000, m);
 				if (isHeld) {
 					longStartupSerial(4);
 					longWarningComplete();
 				}
 			} else {
+				noTone(warning_horn);
 				if (m500) {
 					digitalWrite(ridestartLed, HIGH);
 				} else {
@@ -63,6 +65,7 @@ void longWarning() {
 	}
 }
 void longWarningComplete() {
+	noTone(warning_horn);
 	lampsOff();
 	digitalWrite(ridestartLed, LOW);
 	bFalse();
@@ -87,6 +90,7 @@ void estopResetStartup() {
 
 		if (esrPressed) {
 			digitalWrite(esrLed, HIGH);
+			tone(warning_horn, 250);
 			if (!pSent) {
 				m = millis();
 				pSent = true;
@@ -97,6 +101,7 @@ void estopResetStartup() {
 			      estopResetComplete();
 			}
 		} else {
+			noTone(warning_horn);
 			if (m250) {
 				digitalWrite(esrLed, HIGH);
 			} else {
@@ -111,6 +116,7 @@ void estopResetStartup() {
 	}
 }
 void estopResetComplete() {
+	noTone(warning_horn);
 	estopReseted = true;
 	startCount = 0;
 	lampsOff();
@@ -132,6 +138,7 @@ void finalStartup() {
 
 			if (ridestartPressed) {
 				digitalWrite(ridestartLed, HIGH);
+				tone(warning_horn, 500);
 				if (!pSent) {
 					m = millis();
 					pSent = true;
@@ -142,6 +149,7 @@ void finalStartup() {
 				      finalStarted = true;
 				}
 			} else {
+				noTone(warning_horn);
 				if (m500) {
 					digitalWrite(ridestartLed, HIGH);
 				} else {
@@ -156,5 +164,6 @@ void finalStartup() {
 		}
 }
 void finalStartupComplete() {
+	noTone(warning_horn);
 	finalStarted = true;
 }

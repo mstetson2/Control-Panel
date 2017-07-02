@@ -5,8 +5,11 @@
 void booter() {
 //blink estop during boot
 	estopBlinkBoot();
+//blink powerLed during boot
+	powerBlinkBoot();
+
 	if (!preStarted) {
-		bootCredits();
+		bootCredits();	//	TURNED OFF FOR VIDEO
 		delay(100);
 		disclaimer();
 		delay(100);
@@ -51,6 +54,8 @@ void bootComplete() {
 		  Serial.println("Keyboard Connected.");
 	  else
 		  Serial.println("Keyboard connection failed");
+
+	noTone(warning_horn);
 
 	kEstop();
 	kCloseRestraints();
@@ -107,5 +112,13 @@ void estopBlinkBoot() {
 		} else {
 			digitalWrite(ridestopLed, HIGH);
 		}
+	}
+}
+
+void powerBlinkBoot() {
+	if (m1000) {
+		digitalWrite(powerLed, HIGH);
+	} else {
+		digitalWrite(powerLed, LOW);
 	}
 }

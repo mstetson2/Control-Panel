@@ -14,7 +14,7 @@
 //#include <LCD.h>
 #define GPIO_ADDR 0x27
 
-String version = "8-alpha";
+String version = "8.0.4";
 
 /**** DEBUG NOTES:
 	connection set to true

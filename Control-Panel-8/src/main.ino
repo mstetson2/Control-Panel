@@ -124,7 +124,7 @@ String version = "8-alpha";
 
 	/* OPERATIONS--DIRECTOR */
 		boolean gatesLocked, restraintsLocked, floorDown, flyerLocked;
-		boolean restraintD;
+		boolean restraintD, floorD, chassisD;
 		boolean dispatchReady, dispatchClear, dispatching, dispatchDone;
 		int dispatchCooldown;
 		void typeChecker();
@@ -133,8 +133,13 @@ String version = "8-alpha";
 		void airgates();
 		void restraints();
 		void autoUnlock();
+		void flyerChassis();
+		void floorPlaten();
 	/* OPERATIONS--ERRORHANDLER */
 		boolean errorHandled;
+		boolean errorCleared;
+		boolean errorDisplayed;
+		boolean gotoManDisplayed;
 		int errorSeverity;
 		void rideError(int e);
 		void errorController();
@@ -172,7 +177,16 @@ String version = "8-alpha";
 		void autoMode1();
 		void manualMode1();
 		void bypassMode1();
-
+	/* OPERATIONS---TWO */
+		void modeCheck2();
+		void autoMode2();
+		void manualMode2();
+		void bypassMode2();
+	/* OPERATIONS---THREE */
+		void modeCheck3();
+		void autoMode3();
+		void manualMode3();
+		void bypassMode3();
 	/** FUNCTIONS **/
 
 	/** STARTUP **/
@@ -193,6 +207,7 @@ String version = "8-alpha";
 		void bootComplete();
 		void bFalse();
 		void estopBlinkBoot();
+		void powerBlinkBoot();
 	/* STARTUP--Methods */
 		void lampTest();
 		void lampTestAuto();
@@ -295,7 +310,7 @@ Serial.begin(9600);
   lcd.print("Version: ");
   lcd.print(version);
   lp(0,2);
-  lcd.print("By Matt Stetson");
+  //lcd.print("By Matt Stetson");
 
 
 /* FOR WIRE (KEYBOARD) COMMUNICATION */

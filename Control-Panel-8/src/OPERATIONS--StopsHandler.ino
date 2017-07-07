@@ -8,8 +8,10 @@ void stopListener() {
 		eStopHandled = true;
 	}
 	if (estopPressed) {
+		digitalWrite(estopLed, HIGH);
 		eStop = true;
 		stop = true;
+		rideError(150);
 	}
 	if (ridestopPressed) {
 		rideStop = true;

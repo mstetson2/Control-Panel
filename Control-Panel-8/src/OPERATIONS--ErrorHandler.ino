@@ -29,8 +29,12 @@ void errorHandler() {
 	errorHandled = true;
 }
 void errorView() {
+	lcdData error_100 = {"ERROR 100:", "PANEL KEYSWITCH","SWITCHED OFF","Ack to Continue..."};
+	lcdData error_150 = {"ERROR 150:", "MOC E-STOP PRESSED!","","Ack to Continue..."};
+
 	Serial.println("ERROR: ");
 	Serial.print(errorCode);
+	Serial.print(":  ");
 	lcdC();
 	LCD.print("ERROR:       ");
 	LCD.print(errorCode);
@@ -44,8 +48,10 @@ void errorView() {
 		break;
 	case 100:
 		Serial.println("PANEL KEYED OFF");
+		lcdWrite(error_100);
 		break;
 	case 101:
+	//dont think this is used
 		Serial.println("POWER Keyswitch was switched off.");
 		break;
 	case 110:
@@ -53,6 +59,10 @@ void errorView() {
 		break;
 	case 150:
 		Serial.println("Main panel e-stop pressed!");
+		lcdWrite(error_150);
+		break;
+	case 250:
+		Serial.println("ACKNOWLEDGE ERROR");
 		break;
 	default:
 		Serial.println("NO ERROR");
@@ -61,8 +71,9 @@ void errorView() {
 
 }
 void errorReset() {
-	boolean errorCleared;
-	boolean errorDisplayed;
+lcdData error_gotomanual = {"TROUBLE!", " ", "SWITCH TO MANUAL", "TO CONTINUE"};
+lcdData error_goclear = {"TROUBLE RESET", " ", "PRESS TROUBLE", "TO RESET ERROR"};
+
 	if (modeManual) {
 		if (!errorDisplayed) {
 			errorView();
@@ -70,6 +81,7 @@ void errorReset() {
 		}
 		if (!errorCleared) {
 			if (acknowledgePressed) {
+				lcdWrite(error_goclear);
 				digitalWrite(acknowledgeLed, HIGH);
 				errorCode = 000;
 				Serial.println("Error Cleared. Press TROUBLE to reset.");
@@ -89,14 +101,26 @@ void errorReset() {
 			digitalWrite(acknowledgeLed, LOW);
 		}
 	} else {
+		if(!gotoManDisplayed) {
+			lcdWrite(error_gotomanual);
+			gotoManDisplayed = true;
+	}
 		digitalWrite(acknowledgeLed, LOW);
 		errorDisplayed = false;
 	}
 }
 void errorClearHandle() {
+	lcdData error_hascleared = {"ERROR RESET!", "SWITCH TO DESIRED", "OPERATING MODE", "THEN RIDE START"};
+
+	lcdWrite(error_hascleared);
 	digitalWrite(troubleLed, LOW);
 	Serial.println("Error Reset");
+
 	errorCode = 000;
+	errorDisplayed = false;
+	errorHandled = false;
+	gotoManDisplayed = false;
+	errorCleared = false;
 	error = false;
 }
 

@@ -163,7 +163,7 @@ void stopReset() {
 			functionSelect = true;
 		}
 
-		if (startHoldCounter < 5) {
+		if (startHoldCounter < 20) {
 			if (ridestartPressed) {
 				digitalWrite(ridestartLed, HIGH);
 				startHoldCounter++;

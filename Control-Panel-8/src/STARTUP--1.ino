@@ -4,7 +4,7 @@ void lampTest() {
 //LAMP TEST:
 //MODE:AUTO
 //If function enable, different functions available
-	if (modeAuto) {
+	if (modeAuto || modeBypass) {
 		if (functionEnabled) {
 			if (!b2) {
 				lampTestSerial(2);
@@ -57,7 +57,7 @@ void lampTestFunction() {
 //RIDE STOP: Skip boot
 //Trouble Button: test horn
 	if (!gatesOpen) {
-		if (!m1000) {
+		if (!m500) {
 			digitalWrite(modeLed, HIGH);
 			digitalWrite(troubleLed, LOW);
 			digitalWrite(estopLed, HIGH);
@@ -66,6 +66,8 @@ void lampTestFunction() {
 			digitalWrite(restraintLed, HIGH);
 			digitalWrite(dispatchLLed, HIGH);
 			digitalWrite(dispatchRLed, HIGH);
+			digitalWrite(opsLed, HIGH);
+			digitalWrite(esrLed, HIGH);
 			digitalWrite(acknowledgeLed, LOW);
 		} else {
 			digitalWrite(modeLed, LOW);
@@ -76,9 +78,12 @@ void lampTestFunction() {
 			digitalWrite(restraintLed, LOW);
 			digitalWrite(dispatchLLed, LOW);
 			digitalWrite(dispatchRLed, LOW);
+			digitalWrite(opsLed, LOW);
+			digitalWrite(esrLed, LOW);
 			digitalWrite(acknowledgeLed, HIGH);
 		}
 	} else {
+		//This is to test all LED's; keeps all LED's HIGH
 		digitalWrite(modeLed, HIGH);
 		digitalWrite(troubleLed, HIGH);
 		digitalWrite(estopLed, HIGH);
@@ -87,8 +92,10 @@ void lampTestFunction() {
 		digitalWrite(restraintLed, HIGH);
 		digitalWrite(dispatchLLed, HIGH);
 		digitalWrite(dispatchRLed, HIGH);
+		digitalWrite(opsLed, HIGH);
+		digitalWrite(esrLed, HIGH);
 	}
-	if (ridestopPressed) {
+	if (ridestopPressed && modeBypass) {
 		skipBoot();
 	}
 	if (troublePressed) {

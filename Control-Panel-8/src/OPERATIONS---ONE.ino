@@ -114,8 +114,18 @@ void bypassMode1() {
 			}
 		}
 		else {
+			if(dispatchRPressed) {
+				digitalWrite(dispatchLLed, HIGH);
+				digitalWrite(dispatchRLed, HIGH);
+				kDispatch();
+				lcdSet(100);
+				Serial.println("DISPATCHING!--BYPASS");
+				dispatching = true;
+			}
+			else {
 			digitalWrite(dispatchLLed, LOW);
 			digitalWrite(dispatchRLed, LOW);
+		}
 		}
 	}
 	else {

@@ -97,7 +97,7 @@ int lcdWrite(lcdData d) {
 	lcd.print("                    ");
 	lcd.setCursor(0,3);
 	lcd.print(d.line4);
-	Serial.println("status printed: ");
+	//Serial.println("status printed: ");
 	//Serial.print(status);
 
 	return 1;

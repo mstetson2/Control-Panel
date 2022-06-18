@@ -15,17 +15,12 @@
 //#include <LCD.h>
 #define GPIO_ADDR 0x27
 
-<<<<<<< Updated upstream
-String version = "8-alpha";
-
-=======
 String version = "8.0.5";						//Current Version
 String creditMessage[] = { "Control Panel", "MATTHEW STETSON",
 		"aeater333@gmail.com", "Last Updated: 2019" };
 //added comments
 //fixed ackerror
 //fixed
->>>>>>> Stashed changes
 /**** DEBUG NOTES:
 	connection set to true
 

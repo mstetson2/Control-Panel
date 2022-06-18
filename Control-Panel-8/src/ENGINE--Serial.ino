@@ -9,8 +9,7 @@ void sT(String m) {
 
 void bootCredits() {
 //Prints when panel is booting
-  String creditMessage[] = { "Control Panel", "MATT STETSON",
-      "stetson2@illinois.edu", "Last Updated: 9/8/16" };
+  
   Serial.println(space);
   Serial.println(slant[0]);
   Serial.println(space);
@@ -87,7 +86,7 @@ void lampTestSerial(int ltM) {
     Serial.println(m[0]);
     Serial.println(m[1]);
     Serial.println(space);
-    
+
     b1 = true;
     break;
   case 2:

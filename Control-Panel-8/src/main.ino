@@ -15,7 +15,7 @@
 //#include <LCD.h>
 #define GPIO_ADDR 0x27
 
-String version = "8.0.5";						//Current Version
+String version = "8.0.6";						//Current Version
 String creditMessage[] = { "Control Panel", "MATTHEW STETSON",
 		"aeater333@gmail.com", "Last Updated: 2019" };
 //added comments

@@ -5,16 +5,17 @@
 * mstetson717@gmail.com
 */
 
+
 #include <Arduino.h>
 
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
-#include <SoftwareSerial.h>
+#include <Wire.h>								//Used to communicate between arduinos
+#include <LiquidCrystal_I2C.h>					//Used for LCD Display
+#include <SoftwareSerial.h>						//Used for LCD Display
 //#include <LiquidCrystal_I2C.h>
-//#include <LCD.h>
+//#include <LCD.h>								//Used for maint LCD Display (Disconnected)
 #define GPIO_ADDR 0x27
 
-String version = "8-alpha";
+String version = "8.0.4";						//Current Version
 
 /**** DEBUG NOTES:
 	connection set to true
@@ -256,6 +257,7 @@ String version = "8-alpha";
 	int type;
 	int prevType = 0;
 	int prevMode = 0;
+	int ackPress = 0;
 
 /** OUTPUTS **/
 	const int
@@ -299,6 +301,7 @@ Serial.begin(9600);
   //lcd.begin();
   //lcd.backlight();
 
+	//Initialize LCD:
 	lcd.begin(20,4);
 	lcd.setBacklightPin(3,POSITIVE);
 	lcd.setBacklight(HIGH);

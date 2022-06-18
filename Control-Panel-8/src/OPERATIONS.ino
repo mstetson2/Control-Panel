@@ -8,8 +8,11 @@ void operationsLoops() {
     	typeChecker();
     	stopBlinker();
       acknowledgeErrorListener();
+      typeChangeErrorListener();
     }
     else {
+        prevType = type;
+
     	if(!estopPressed) {
     	stopReset();
     	}
@@ -101,16 +104,34 @@ void setModeLed() {
 }
 
 void acknowledgeErrorListener() {
-  int ackPress;
-  if(acknowledgePressed) {
-    ackPress++;
-    digitalWrite(acknowledgeLed, HIGH);
+    if(modeAuto)    {
+      if(acknowledgePressed) {
+        ackPress++;
+        digitalWrite(acknowledgeLed, HIGH);
+        if(ackPress > 1000) {
+            ackPress = 0;
+            rideError(250);
+        }
+        return;
+      }
+      else {
+        digitalWrite(acknowledgeLed, LOW);
+      }
   }
-  else {
-    digitalWrite(acknowledgeLed, LOW);
-  }
-  if(ackPress > 10) {
-    ackPress = 0;
-    rideError(250);
-  }
+}
+
+void typeChangeErrorListener() {
+    int curType = type;
+
+    if(!modeBypass) {
+        if(prevType == 0) {
+            prevType = type;
+            return;
+        }
+        if(curType != prevType) {
+            rideError(161);
+        }
+    }
+
+    prevType = type;
 }

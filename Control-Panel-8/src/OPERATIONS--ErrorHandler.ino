@@ -5,6 +5,10 @@
 void rideError(int e) {
 	error = true;
 	errorCode = e;
+	if(!keyboardStopSent) {
+		kEstop();
+		keyboardStopSent = true;
+	}
 }
 
 void errorController() {
@@ -30,7 +34,10 @@ void errorHandler() {
 }
 void errorView() {
 	lcdData error_100 = {"ERROR 100:", "PANEL KEYSWITCH","SWITCHED OFF","Ack to Continue..."};
-	lcdData error_150 = {"ERROR 150:", "MOC E-STOP PRESSED!","","Ack to Continue..."};
+	lcdData error_150 = {"ERROR 150:", "MOC E-STOP PRESSED","","Ack to Continue..."};
+	lcdData error_161 = {"ERROR 161:", "OPS TYPE CHANGED","WHILE ACTIVE","Ack to Continue..."};
+	lcdData error_250 = {"ERROR 250", "ACKNWOLEDGE ERROR", "Nothing to ack...","Ack to Continue..."};
+
 
 	Serial.println("ERROR: ");
 	Serial.print(errorCode);
@@ -61,8 +68,15 @@ void errorView() {
 		Serial.println("Main panel e-stop pressed!");
 		lcdWrite(error_150);
 		break;
+	case 161:
+		Serial.println("OPERATIONS TYPE changed while ride active.");
+		lcdWrite(error_161);
+		prevType = type;
+		break;
 	case 250:
 		Serial.println("ACKNOWLEDGE ERROR");
+		lcdWrite(error_250);
+		ackPress = 0;
 		break;
 	default:
 		Serial.println("NO ERROR");
